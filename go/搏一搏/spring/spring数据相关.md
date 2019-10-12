@@ -23,3 +23,13 @@ JdbcTemplate
 	1. 配置DataSourceTransactionManager
 3. JdbcTemplateAautoConfiguration
 	1. 配置JdbcTemplate
+
+
+
+### ORM框架
+
+**hibernate**
+
+
+
+
