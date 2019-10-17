@@ -21,6 +21,10 @@
 	transaction-isolation #mysql 默认REPEATABLE-READ 
 
 	autocommit #0-关闭事务自动提交 1-开启
+	
+	max_execution_time #控制每个语句执行的最长时间，避免单个语句意外执行太长时间
+
+	innodb_undo_tablespaces ? #MySQL 5.6或者更新版本，把innodb_undo_tablespaces设置成2（或更大的值）。如果真的出现大事务导致回滚段过大，这样设置后清理起来更方便
 
 ### sql
 	elect SQL_CACHE * from T where ID=10；#SQL_CACHE 显示指定SQL走查询缓存
