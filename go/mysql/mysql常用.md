@@ -26,6 +26,10 @@
 
 	innodb_undo_tablespaces ? #MySQL 5.6或者更新版本，把innodb_undo_tablespaces设置成2（或更大的值）。如果真的出现大事务导致回滚段过大，这样设置后清理起来更方便
 
+	innodb_lock_wait_timeout # 等待锁超时设置 默认50s
+
+	innodb_deadlock_detect #发起死锁检测，发现死锁后，主动回滚死锁链条中的某一个事务，让其他事务得以继续执行  on-开启 默认开启
+
 ### sql
 	elect SQL_CACHE * from T where ID=10；#SQL_CACHE 显示指定SQL走查询缓存
 
