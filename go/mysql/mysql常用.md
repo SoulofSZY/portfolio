@@ -7,7 +7,11 @@
 
 	show variables like 'transaction_isolation' #查看事务隔离级别
 
-	begin/start transaction/commit/commit work and chain/rollback #事务基本指令
+	begin/start transaction/commit/commit work and chain/rollback #事务基本指令|
+
+	start transaction with consistent snapshot #立即开启事务
+
+	show index from table; # 查看索引基数
 
 ### 参数
 	wait_timeout #空闲连接存活时间 默认8小时
@@ -29,6 +33,8 @@
 	innodb_lock_wait_timeout # 等待锁超时设置 默认50s
 
 	innodb_deadlock_detect #发起死锁检测，发现死锁后，主动回滚死锁链条中的某一个事务，让其他事务得以继续执行  on-开启 默认开启
+
+	innodb_change_buffer_max_size #change buffer的大小最多只能占用buffer pool的百分比 默认25 即25%
 
 ### sql
 	elect SQL_CACHE * from T where ID=10；#SQL_CACHE 显示指定SQL走查询缓存
