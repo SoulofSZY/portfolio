@@ -46,5 +46,42 @@
 
 **总结**：
 	碰到上下文切换次数过多的问题时，我们可以借助 vmstat 、 pidstat 和 /proc/interrupts 等工具，来辅助排查性能问题的根源
+
+### CPU使用率
+	uname -r # 查看内核版本
+
+	grep 'CONFIG_HZ=' /boot/config-$(uname -r) # 查看CPU hz数（节拍率）
+
+	top 和 ps 是最常用的性能分析工具：
+		top 显示了系统总体的 CPU 和内存使用情况，以及各个进程的资源使用情况
+		top 默认显示的是所有 CPU 的平均值，这个时候你只需要按下数字 1 ，就可以切换到每个 CPU 的使用率
+
+		ps 则只显示了每个进程的资源使用情况。
+	
+	GDB（The GNU Project Debugger）
+		GDB 在调试程序错误方面很强大，GDB 调试程序的过程会中断程序运行，这在线上环境往往是不允许的。所以，GDB 只适合用在性能分析的后期，当你找到了出问题的大致函数后，线下再借助它来进一步调试函数内部的问题
+	
+	perf perf 是 Linux 2.6.31 以后内置的性能分析工具
+		 perf top，类似于 top，它能够实时显示占用 CPU 时钟最多的函数或者指令
+	     perf record 和 perf report。 perf top 虽然实时展示了系统的性能信息，但它的缺点是并不保存数据，也就无法用于离线或者后续的分析。而 perf record 则提供了保存数据的功能，保存后的数据，需要 perf report 解析展示
+		 -g 开启调用关系分析
+		 -p 指定进程号
+
+	ab(apache bench 常用的 HTTP 服务性能测试工具)
+		ab -c 10 -n 100 http://192.168.0.10:10000/
+		-c 并发数
+		-n 总请求数
+		-t 请求时长
+	
+	pstree
+
+	execsnoop 
+
+
+**总结**：
+
+1. 通过 top、ps、pidstat 等工具，找到 CPU 使用率较高（比如 100% ）的进程
+2. 通过GDB/perf 定位占用 CPU 的代码里的函数
+3. 注意短时应用
 	
 	
