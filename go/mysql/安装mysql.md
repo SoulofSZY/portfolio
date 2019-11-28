@@ -53,6 +53,10 @@
 
 	whereis mysql #查看MySQL安装目录
 
+
+## 账号
+root Szy_123&
+
 	
 
 	
