@@ -6,7 +6,7 @@
 5. mybatis-plus
 
 
-### 基本概率
+### 基本概念
 1. DataSource  pool
 2. TransactionFactory
 3. SqlSessionFactoryBuild
@@ -14,6 +14,7 @@
 5. SqlSession
 6. Mapper 
 7. xml/annotation
+8. 本地缓存和二级缓存
 
 **作用域&生命周期**
 
@@ -31,7 +32,35 @@ SqlSession：
 
 **xml配置**
 
-properties
+properties 属性
 > 通过方法参数传递的属性具有最高优先级，resource/url 属性中指定的配置文件次之，最低优先级的是 properties 属性中指定的属性
+
+settings 设置
+>MyBatis 中极为重要的调整设置，它们会改变 MyBatis 的运行时行为
+
+typeAliases 类型别名
+>类型别名是为 Java 类型设置一个短的名字。 它只和 XML 配置有关，存在的意义仅在于用来减少类完全限定名的冗余
+
+typeHandlers 类型处理器
+>扩展点1  重写类型处理器或创建自定义类型处理器来处理不支持的或非标准的类型【TypeHandler/BaseTypeHandler】
+>xml 优先于 注解
+
+处理枚举类型
+>扩展点2 针对枚举类型的处理  比较单一
+
+objectFactory 对象工厂
+>扩展点3 结果对象新实例创建 
+
+plugins 插件
+>扩展点4 主要的扩展点 已映射语句执行过程中的某一点进行拦截调用
+
+environments 环境
+> 数据源 事务
+
+databaseIdProvider 数据库厂商标识
+> 辅助功能 简短数据库标识
+
+mappers 映射器
+> 实际业务开发  sql
 
     
